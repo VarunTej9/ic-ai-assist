@@ -1,0 +1,24 @@
+{
+  "batch_id": "batch-invalid-test",
+  "source": "invalid_audit_events.csv",
+  "input_rows": 3,
+  "accepted_rows": 1,
+  "rejected_rows": 2,
+  "missing_values": {},
+  "rejected_details": [
+    {
+      "row_number": 3,
+      "errors": [
+        "event_time must be a valid date/time"
+      ]
+    },
+    {
+      "row_number": 4,
+      "errors": [
+        "Duplicate event_id"
+      ]
+    }
+  ],
+  "normalized_records_hash": "42c8eba6e8da762b07a4fd160fb744b0d6afa8513f3648341cd97b61c7a29a3b",
+  "ingested_at": "2026-09-20T07:19:41.784617+00:00"
+}

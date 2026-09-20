@@ -1,0 +1,4 @@
+event_id,model_id,event_type,user_id,event_time,status,change_count
+10,MODEL-010,MODEL_UPDATED,user-100,2026-09-10 10:00:00,SUCCESS,2
+11,MODEL-011,MODEL_UPDATED,user-101,invalid-date,SUCCESS,3
+10,MODEL-012,MODEL_UPDATED,user-102,2026-09-10 11:00:00,SUCCESS,4
