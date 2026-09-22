@@ -1,0 +1,185 @@
+{
+  "generated_at": "2026-09-22T16:29:47.520061+00:00",
+  "model_version": "isolation-forest-v1",
+  "training_data_version": "sqlite-audit-snapshot-v1",
+  "feature_version": "audit-features-v1",
+  "results": [
+    {
+      "event_id": 1,
+      "model_id": "MODEL-001",
+      "risk_score": 0.2297,
+      "risk_band": "LOW",
+      "rule_score": 0.0,
+      "ml_score": 0.5742,
+      "is_unusual": true,
+      "reasons": [
+        "Isolation Forest detected an unusual feature combination"
+      ],
+      "model_version": "isolation-forest-v1",
+      "training_data_version": "sqlite-audit-snapshot-v1",
+      "feature_version": "audit-features-v1",
+      "review_status": "PENDING",
+      "reviewed_by": null,
+      "review_reason": null
+    },
+    {
+      "event_id": 2,
+      "model_id": "MODEL-001",
+      "risk_score": 0.0598,
+      "risk_band": "LOW",
+      "rule_score": 0.0,
+      "ml_score": 0.1495,
+      "is_unusual": false,
+      "reasons": [
+        "No strong unusual signal detected"
+      ],
+      "model_version": "isolation-forest-v1",
+      "training_data_version": "sqlite-audit-snapshot-v1",
+      "feature_version": "audit-features-v1",
+      "review_status": "PENDING",
+      "reviewed_by": null,
+      "review_reason": null
+    },
+    {
+      "event_id": 3,
+      "model_id": "MODEL-001",
+      "risk_score": 1.0,
+      "risk_band": "HIGH",
+      "rule_score": 1.0,
+      "ml_score": 1.0,
+      "is_unusual": true,
+      "reasons": [
+        "Large number of changes in one event",
+        "Event failed",
+        "Change occurred outside normal working hours",
+        "New event type for this model",
+        "Unusual user and model combination",
+        "Isolation Forest detected an unusual feature combination"
+      ],
+      "model_version": "isolation-forest-v1",
+      "training_data_version": "sqlite-audit-snapshot-v1",
+      "feature_version": "audit-features-v1",
+      "review_status": "PENDING",
+      "reviewed_by": null,
+      "review_reason": null
+    },
+    {
+      "event_id": 4,
+      "model_id": "MODEL-002",
+      "risk_score": 0.1516,
+      "risk_band": "LOW",
+      "rule_score": 0.15,
+      "ml_score": 0.154,
+      "is_unusual": false,
+      "reasons": [
+        "New event type for this model"
+      ],
+      "model_version": "isolation-forest-v1",
+      "training_data_version": "sqlite-audit-snapshot-v1",
+      "feature_version": "audit-features-v1",
+      "review_status": "PENDING",
+      "reviewed_by": null,
+      "review_reason": null
+    },
+    {
+      "event_id": 5,
+      "model_id": "MODEL-002",
+      "risk_score": 0.09,
+      "risk_band": "LOW",
+      "rule_score": 0.15,
+      "ml_score": 0.0,
+      "is_unusual": false,
+      "reasons": [
+        "New event type for this model"
+      ],
+      "model_version": "isolation-forest-v1",
+      "training_data_version": "sqlite-audit-snapshot-v1",
+      "feature_version": "audit-features-v1",
+      "review_status": "PENDING",
+      "reviewed_by": null,
+      "review_reason": null
+    },
+    {
+      "event_id": 6,
+      "model_id": "MODEL-003",
+      "risk_score": 0.6995,
+      "risk_band": "MEDIUM",
+      "rule_score": 0.9,
+      "ml_score": 0.3986,
+      "is_unusual": true,
+      "reasons": [
+        "Large number of changes in one event",
+        "Event failed",
+        "Change occurred outside normal working hours",
+        "New event type for this model",
+        "Isolation Forest detected an unusual feature combination"
+      ],
+      "model_version": "isolation-forest-v1",
+      "training_data_version": "sqlite-audit-snapshot-v1",
+      "feature_version": "audit-features-v1",
+      "review_status": "PENDING",
+      "reviewed_by": null,
+      "review_reason": null
+    },
+    {
+      "event_id": 7,
+      "model_id": "MODEL-001",
+      "risk_score": 0.0598,
+      "risk_band": "LOW",
+      "rule_score": 0.0,
+      "ml_score": 0.1495,
+      "is_unusual": false,
+      "reasons": [
+        "No strong unusual signal detected"
+      ],
+      "model_version": "isolation-forest-v1",
+      "training_data_version": "sqlite-audit-snapshot-v1",
+      "feature_version": "audit-features-v1",
+      "review_status": "PENDING",
+      "reviewed_by": null,
+      "review_reason": null
+    },
+    {
+      "event_id": 8,
+      "model_id": "MODEL-003",
+      "risk_score": 0.7457,
+      "risk_band": "MEDIUM",
+      "rule_score": 0.9,
+      "ml_score": 0.5141,
+      "is_unusual": true,
+      "reasons": [
+        "Large number of changes in one event",
+        "Event failed",
+        "Change occurred outside normal working hours",
+        "New event type for this model",
+        "Isolation Forest detected an unusual feature combination"
+      ],
+      "model_version": "isolation-forest-v1",
+      "training_data_version": "sqlite-audit-snapshot-v1",
+      "feature_version": "audit-features-v1",
+      "review_status": "PENDING",
+      "reviewed_by": null,
+      "review_reason": null
+    },
+    {
+      "event_id": 10,
+      "model_id": "MODEL-010",
+      "risk_score": 0.4191,
+      "risk_band": "LOW",
+      "rule_score": 0.25,
+      "ml_score": 0.6728,
+      "is_unusual": true,
+      "reasons": [
+        "New event type for this model",
+        "Unusual user and model combination",
+        "Isolation Forest detected an unusual feature combination"
+      ],
+      "model_version": "isolation-forest-v1",
+      "training_data_version": "sqlite-audit-snapshot-v1",
+      "feature_version": "audit-features-v1",
+      "review_status": "PENDING",
+      "reviewed_by": null,
+      "review_reason": null
+    }
+  ]
+}

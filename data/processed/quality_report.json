@@ -1,24 +1,11 @@
 {
-  "batch_id": "batch-invalid-test",
-  "source": "invalid_audit_events.csv",
-  "input_rows": 3,
-  "accepted_rows": 1,
-  "rejected_rows": 2,
+  "batch_id": "batch-local-001",
+  "source": "audit_events.csv",
+  "input_rows": 8,
+  "accepted_rows": 8,
+  "rejected_rows": 0,
   "missing_values": {},
-  "rejected_details": [
-    {
-      "row_number": 3,
-      "errors": [
-        "event_time must be a valid date/time"
-      ]
-    },
-    {
-      "row_number": 4,
-      "errors": [
-        "Duplicate event_id"
-      ]
-    }
-  ],
-  "normalized_records_hash": "42c8eba6e8da762b07a4fd160fb744b0d6afa8513f3648341cd97b61c7a29a3b",
-  "ingested_at": "2026-09-20T07:19:41.784617+00:00"
+  "rejected_details": [],
+  "normalized_records_hash": "b6386506689629b20c82fac2f7c0634f04dae8ee3403ceffad6e40af09c1621e",
+  "ingested_at": "2026-09-20T09:17:54.914379+00:00"
 }

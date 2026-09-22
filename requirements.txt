@@ -10,3 +10,4 @@ pytest
 jupyter
 sentence-transformers
 chromadb
+joblib
