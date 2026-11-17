@@ -47,6 +47,7 @@ def create_app() -> FastAPI:
     )
 
     repository = SyntheticModelRepository()
+    app.state.repository = repository
 
     app.state.investigation_service = InvestigationService(repository)
     app.state.assistant_service = AssistantService(

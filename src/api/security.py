@@ -1,11 +1,12 @@
-from __future__ import annotations
-
 from datetime import datetime, timedelta, timezone
 from typing import Callable
 
 import jwt
-from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from fastapi import Depends, HTTPException
+from fastapi.security import (
+    HTTPAuthorizationCredentials,
+    HTTPBearer,
+)
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -24,7 +25,7 @@ class Settings(BaseSettings):
 settings = Settings()
 bearer_scheme = HTTPBearer(auto_error=False)
 
-class AuthUser(BaseModel):
+class CurrentUser(BaseModel):
     user_id: str
     tenant_id: str
     role: str
@@ -35,9 +36,6 @@ def create_access_token(
     role: str,
 ) -> str:
     now = datetime.now(timezone.utc)
-    expires_at = now + timedelta(
-        minutes=settings.jwt_expiration_minutes
-    )
 
     payload = {
         "sub": user_id,
@@ -46,7 +44,9 @@ def create_access_token(
         "iss": settings.jwt_issuer,
         "aud": settings.jwt_audience,
         "iat": now,
-        "exp": expires_at,
+        "exp": now + timedelta(
+            minutes=settings.jwt_expiration_minutes
+        ),
     }
 
     return jwt.encode(
@@ -59,10 +59,10 @@ def get_current_user(
     credentials: HTTPAuthorizationCredentials | None = Depends(
         bearer_scheme
     ),
-) -> AuthUser:
+) -> CurrentUser:
     if credentials is None:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
+            status_code=401,
             detail="Authentication is required.",
         )
 
@@ -75,38 +75,29 @@ def get_current_user(
             audience=settings.jwt_audience,
         )
 
-        user_id = payload.get("sub")
-        tenant_id = payload.get("tenant_id")
-        role = payload.get("role")
-
-        if not user_id or not tenant_id or not role:
-            raise ValueError("Required claims are missing.")
-
-        return AuthUser(
-            user_id=user_id,
-            tenant_id=tenant_id,
-            role=role,
+        return CurrentUser(
+            user_id=payload["sub"],
+            tenant_id=payload["tenant_id"],
+            role=payload["role"],
+        )
+    except (jwt.InvalidTokenError, KeyError):
+        raise HTTPException(
+            status_code=401,
+            detail="The access token is invalid or expired.",
         )
 
-    except (jwt.InvalidTokenError, ValueError) as exc:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="The access token is invalid or expired.",
-        ) from exc
-
-def require_roles(*allowed_roles: str) -> Callable:
-    def dependency(
-        user: AuthUser = Depends(get_current_user),
-    ) -> AuthUser:
-        if user.role not in allowed_roles:
+def require_roles(*roles: str) -> Callable:
+    def check_role(
+        user: CurrentUser = Depends(get_current_user),
+    ) -> CurrentUser:
+        if user.role not in roles:
             raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
+                status_code=403,
                 detail="The user is not authorized for this operation.",
             )
-
         return user
 
-    return dependency
+    return check_role
 
 read_access = require_roles(
     "viewer",
